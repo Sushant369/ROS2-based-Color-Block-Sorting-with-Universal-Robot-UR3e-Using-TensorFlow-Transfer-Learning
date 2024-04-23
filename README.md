@@ -10,12 +10,18 @@ https://github.com/Sushant369/ROS2-based-Color-Block-Sorting-with-Universal-Robo
 
 The system uses a Universal Robot UR3e robotic arm to identify and sort blocks based on their color. TensorFlow Transfer Learning is employed to train a model capable of color recognition, which then guides the robotic arm to sort the blocks into designated areas. The implementation leverages ROS2 for managing the robot's operations and communications.
 
-### Features
+## Features
 
 - **Color Detection**: Utilize TensorFlow to recognize different colored blocks.
 - **Robotic Manipulation**: Control the UR3e robot to move and sort the blocks based on the detected color.
 - **Parameterized Robot Movements**: Configure different movements for the robot through ROS2 parameters.
 - **Real-Time Interaction**: Real-time control and feedback from the robot using ROS2 topics and services.
+- **Custom ROS2 Actions**: Implemented custom ROS2 actions to manage robotic movements, enabling the UR3e arm to execute complex tasks.
+- **Advanced Robotic Control Algorithms**: Developed advanced control algorithms to enable precise movement and task execution with the UR3e robot, utilizing Python programming and MoveIt2 for real-time manipulation and task planning.
+- **High-Performance AI Training**: Enhanced detection accuracy and efficiency by applying transfer learning with MobileNet SSD and EfficientNet D0 models, accelerated using NVIDIA RTX 3060 GPU and CUDA.
+- **Object Detection on NVIDIA Jetson Nano**: Utilized NVIDIA Jetson Nano to perform object detection with TensorFlow transfer learning, publishing detected outputs to common ROS2 Domain ID to set up a collaborative environment.
+- **Automated Conveyor Belt Operation**: Programmed PLC and ESP8266 to enhance conveyor belt operation with infrared sensors, boosting movement precision and efficiency in automation.
+
 
 ## System Requirements
 
