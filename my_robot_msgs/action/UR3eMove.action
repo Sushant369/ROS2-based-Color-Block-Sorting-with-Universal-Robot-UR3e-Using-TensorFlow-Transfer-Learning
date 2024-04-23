@@ -1,0 +1,10 @@
+#goal         
+string task
+
+---
+#result
+string completed
+---
+#feedback
+string status
+

@@ -1,0 +1,20 @@
+ROBOT 2:
+
+### UR_ROBOT_DRIVER LAUNCH COMMAND ###
+
+ros2 launch mxet_ur_launch ex-ur3e-2.launch.py robot_ip:=192.168.1.32 ur_type:="ur3e"
+
+
+### UR_MOVEIT_CONFIG LAUNCH COMMAND ### (new terminal)
+
+ros2 launch mxet_ur_launch moveit-ur3-2.launch.py robot_ip:=192.168.1.32 ur_type:="ur3e"
+
+
+### RUN YOUR CODE ### 
+
+ros2 run mini_project r2_commander
+
+
+### Examples: 
+ros2 interface show sensor_msgs/msg/JointState 
+

@@ -1,0 +1,79 @@
+#Get calibration
+source /opt/ros/humble/setup.bash
+
+ros2 launch ur_calibration calibration_correction.launch.py \
+robot_ip:=192.168.0.102 target_filename:=my_robot_calibration.yaml
+
+
+Thoroughly follow the procedure as explained:
+PROFINET should be disabled. I have explained how to disable it.
+Configure UR IP as 192.168.0.102 and netmask 255.255.255.0 and Host-PC IP 192.168.0.107 and netmask 255.255.255.0 
+Configure URCap External Control Important point is to set the IP address 192.168.0.107 and port 50002 while configuring URCap external control.
+
+
+Setup on pc:
+connected to router which is connected to robot and other devices that should talk over ros2
+-set static ip on host computer on the wired settings:
+    address 192.168.0.107
+    net mask 255.255.255.0
+
+Setup on robot:
+-Network in settings
+    -Static address
+    - ip : 192.168.0.102 (192.16.0.XXX) is the important. xxx is variable as you want
+    -sub net mask must be same as host: 255.255.255.0
+    -the rest should be zeros
+
+-External control in program
+    -Host ip: the ip of the host computer 192.168.0.107
+    -custom port : 50002
+
+
+
+build ws:
+colcon build --merge-install --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
+source install/setup.bash 
+
+
+
+Simulation / realRobot:
+
+    terminal1:(gazebo_Ur5)
+    cd github/Ur5_and_sim
+    source /opt/ros/humble/setup.bash 
+    source install/setup.bash 
+    ros2 launch multi_robot_arm gazebo_arm.launch.py
+
+    terminal2:(main)
+    cd github/Ur5_and_sim
+    source /opt/ros/humble/setup.bash 
+    source install/setup.bash
+    cd src/pymoveit2/textilePrograms
+    python3 main.py True #For simulation
+    python3 main.py False #For realRobot
+
+    terminal3:(testPub)
+    cd github/Ur5_and_sim
+    source /opt/ros/humble/setup.bash 
+    source install/setup.bash
+    cd /src/pymoveit2/textilePrograms
+    python3 testPub.py
+
+    terminal4:(objectDetection)
+    cd github/objectDetectionTextile/src/yoloV8
+    source /opt/ros/humble/setup.bash 
+    python3 objectDetectioTextile.py 
+
+    terminal5:(realsense2_camera)
+    cd github/objectDetectionTextile
+    source /opt/ros/humble/setup.bash 
+    ros2 launch realsense2_camera rs_launch.py camera_namespace:=textilePose camera_name:=D455
+
+    terminal6:(ur_robot_driver)
+    source /opt/ros/humble/setup.bash 
+    ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.0.102 use_mock_hardware:=true launch_rviz:=false initial_joint_controller:=joint_trajectory_controller
+
+    terminal7:(ur_moveit)
+    source /opt/ros/humble/setup.bash 
+    ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur5 launch_rviz:=false use_mock_hardware:=false
+

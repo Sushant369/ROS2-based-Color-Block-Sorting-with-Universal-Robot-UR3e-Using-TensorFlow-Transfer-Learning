@@ -1,0 +1,6 @@
+int32 duration    # The time (in seconds) 
+string traj_name  # Name of a specific trajectory or routine to execute
+ 
+---
+bool success      # Did it achieve it?
+string message    #For error messages or status updates

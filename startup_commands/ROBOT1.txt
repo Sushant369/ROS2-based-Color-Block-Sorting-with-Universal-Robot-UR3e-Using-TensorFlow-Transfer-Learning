@@ -1,0 +1,24 @@
+ROBOT 1:
+
+### UR_ROBOT_DRIVER LAUNCH COMMAND ###
+ros2 launch mxet_ur_launch ex-ur3e-1.launch.py robot_ip:=192.168.1.31 ur_type:="ur3e"
+
+
+### UR_MOVEIT_CONFIG LAUNCH COMMAND ### (new terminal) _NOT NEEDED_
+ros2 launch mxet_ur_launch moveit-ur3-1.launch.py robot_ip:=192.168.1.31 ur_type:="ur3e"
+
+
+### LAUNCH SCALED TRAJECTORY TEST ### (close UR_MOVEIT first)
+ros2 launch mxet_ur_launch test_scaled_joint_trajectory_controller.launch.py
+
+
+### publish /joint_states topic ###
+ros2 topic echo /joint_states --once
+
+### PAY ATTENTION TO THE ORDER OF THE JOINT NAMES ###
+
+Order of joints from of /joint_states DOES NOT MATCH the order the .yaml expects
+
+### For more info
+ros2 interface show sensor_msgs/msg/JointState 
+
