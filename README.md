@@ -22,7 +22,7 @@ https://github.com/Sushant369/TensorFlow-UR3e-BlockDetect
 - **Real-Time Interaction**: Real-time control and feedback from the robot using ROS2 topics and services.
 - **Custom ROS2 Actions**: Implemented custom ROS2 actions to manage robotic movements, enabling the UR3e arm to execute complex tasks.
 - **Advanced Robotic Control Algorithms**: Developed advanced control algorithms to enable precise movement and task execution with the UR3e robot, utilizing Python programming and MoveIt2 for real-time manipulation and task planning.
-- **High-Performance AI Training**: Enhanced detection accuracy and efficiency by applying transfer learning with MobileNet SSD and EfficientNet D0 models, accelerated using NVIDIA RTX 3060 GPU and CUDA.
+- **High-Performance AI Training**: Enhanced detection accuracy and efficiency by applying transfer learning with MobileNet SSD and EfficientNet D0 models, accelerated using NVIDIA RTX 4060 GPU and CUDA.
 - **Object Detection on NVIDIA Jetson Nano**: Utilized NVIDIA Jetson Nano to perform object detection with TensorFlow transfer learning, publishing detected outputs to common ROS2 Domain ID to set up a collaborative environment.
 - **Automated Conveyor Belt Operation**: Programmed PLC and ESP8266 to enhance conveyor belt operation with infrared sensors, boosting movement precision and efficiency in automation.
 
